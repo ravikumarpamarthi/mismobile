@@ -1,0 +1,63 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="true">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+          <!-- <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1" ng-model="date">{{selectedDate1|date}}</span> -->
+        <span style="display:inline-block;margin-top:3px;font-weight:500;">{{pendingDate}}</span>
+        </span>
+    </ion-header-bar>
+    <form name="energyMeter" ng-submit="submitEnergyMeterData(data)" novalidate>
+        <ion-content class="padding has-header animated fadeIn mar-neg-lr-10" style="margin-bottom:50px;padding-top:30px;" has-bouncing="false">
+            <div class="row">
+                <div class="col ">
+                    <div class="list">
+                        <label class="item item-input item-select" style="padding:5px; ">
+                            <div class="input-label">
+                                Plant Name
+                            </div>
+                            <select ng-model="selectedItem" ng-options="plant as plant.name for plant in plants" ng-change="getPlants(selectedItem);">
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="error text-center " ng-if="pendingDateNull">
+                {{pendingDateNull}}
+            </div>
+            <div class="list row">
+                <!--  <label class="col item item-input">
+                <input class="fullWidthInput" ng-model="data.meterType" type="text" placeholder="Feeder">
+                  
+                </label> -->
+                <select ng-model="EnergyMeterOptions.value" ng-options="v for v in EnergyMeterOptions.values">
+                </select>
+                <label class="form-control col item item-input" ng-class="{'has-error': energyMeter.exportKWH.$dirty && energyMeter.exportKWH.$invalid}">
+                    <input class="form-control fullWidthInput" name="exportKWH" ng-model="data.exportKWH" type="tel" placeholder="Export (kWh)" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001">
+                </label>
+                <label class="form-control col item item-input" ng-class="{'has-error': energyMeter.importKWH.$dirty && energyMeter.importKWH.$invalid}">
+                    <input class="form-control fullWidthInput" name="importKWH" type="tel" ng-model="data.importKWH" placeholder="Import (kWh)" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001">
+                </label>
+            </div>
+            <div class="list row hidden ">
+                <label class="col item item-input">
+                    <input class="fullWidthInput" type="text" ng-model="data.meterType" placeholder="Energy Meter">
+                </label>
+                <label class="col item item-input">
+                    <input class="fullWidthInput" type="text" ng-model="data.exportKWH" placeholder="Export (kWh)">
+                </label>
+                <label class="col item item-input">
+                    <input class="fullWidthInput" type="text" ng-model="data.importKWH" placeholder="Import (kWh)">
+                </label>
+            </div>
+        </ion-content>
+        <div class="tabs dashboardTabsStyle">
+            <button class="button button-stable button-block  button-clear" type="submit" style="font-size:16px;color:white;opacity:1;margin-top: 0px;" ng-disabled="pendingDateNull">
+                SUBMIT
+            </button>
+            <!-- <button ui-sref="main.dashboard" class="button button-stable button-block  button-clear" type="submit" style="font-size:16px;color:black;opacity:1;margin-top: 0px;">
+                CANCEL
+            </button> -->
+        </div>
+    </form>
+</ion-view>

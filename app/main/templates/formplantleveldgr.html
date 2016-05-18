@@ -1,0 +1,91 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="true">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+          <!-- <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1" ng-model="date">{{selectedDate1|date}}</span> -->
+        <span style="display:inline-block;margin-top:3px;font-weight:500;">{{pendingDate}}</span>
+        </span>
+    </ion-header-bar>
+    <form name="data1" ng-submit="submitPlantlevelData(data)" novalidate>
+        <ion-content class="has-header animated fadeIn mar-neg-lr-10" style="margin-bottom:50px;" has-bouncing="false">
+            <div class="row">
+                <div class="col ">
+                    <div class="list">
+                        <label class="item item-input item-select" style="padding:5px; ">
+                            <div class="input-label">
+                                Plant Name
+                            </div>
+                            <select ng-model="selectedItem" ng-options="plant as plant.name for plant in plants" ng-change="getPlants(selectedItem);">
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="error text-center " ng-if="pendingDateNull">
+                {{pendingDateNull}}
+            </div>
+            
+            <div class="list list-inset">
+                <label class=" item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.headWaterLevel.$dirty && data1.headWaterLevel.$invalid}">
+                    <span class="input-label">Dam/Intake/headrace Water level</span>
+                    <input type="tel" name="headWaterLevel" class="form-control" placeholder="Dam/Intake/headrace Water level" ng-model="data.headWaterLevel"  required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001">
+                </label>
+                <!-- <div style="color:red;padding:10px 15px;">sdfsdfdsdsfsdfds</div> -->
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.reservoirInflow.$dirty && data1.reservoirInflow.$invalid}">
+                    <span class="input-label">Inflow to Reservoir</span>
+                    <input type="tel" name="reservoirInflow" class="form-control" placeholder="Inflow to Reservoir" ng-model="data.reservoirInflow" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.hrwaterlevel.$dirty && data1.hrwaterlevel.$invalid}">
+                    <span class="input-label">Reservoir water level</span>
+                    <input type="tel" name="hrwaterlevel" class="form-control" placeholder="Reservoir water level" ng-model="data.hrwaterlevel" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.grid_availability.$dirty && data1.grid_availability.$invalid}">
+                    <span class="input-label">Grid Availability</span>
+                    <input type="tel" name="grid_availability" class="form-control" placeholder="Grid Availability" ng-model="data.grid_availability" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.tailRaceWaterLevel.$dirty && data1.tailRaceWaterLevel.$invalid}">
+                    <span class="input-label">TWL/ Tailrace water level</span>
+                    <input type="tel" name="tailRaceWaterLevel" class="form-control" placeholder="TWL/ Tailrace water level" ng-model="data.tailRaceWaterLevel" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.gatesDischarge.$dirty && data1.gatesDischarge.$invalid}">
+                    <span class="input-label">Discharge Dam gates/ barrage gates</span>
+                    <input type="tel" name="gatesDischarge" class="form-control" placeholder="Discharge Dam gates/ barrage gates" ng-model="data.gatesDischarge" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.plantLevelDischarge.$dirty && data1.plantLevelDischarge.$invalid}">
+                    <span class="input-label">Plant Discharge</span>
+                    <input type="tel" name="plantLevelDischarge" class="form-control" placeholder="Plant Discharge" ng-model="data.plantLevelDischarge" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.plantAvailability.$dirty && data1.plantAvailability.$invalid}">
+                    <span class="input-label">Plant Availability</span>
+                    <input type="tel" name="plantAvailability" class="form-control" placeholder="Plant Availability" ng-model="data.plantAvailability" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <h4 class="padding"><strong>Auxiliary</strong> Consumption</h4>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.auxiliaryIncomer1.$dirty && data1.auxiliaryIncomer1.$invalid}">
+                    <span class="input-label">ATA (AUX.INCOMER-1)</span>
+                    <input type="tel" name="auxiliaryIncomer1" class="form-control" placeholder="ATA (AUX.INCOMER-1)" ng-model="data.auxiliaryIncomer1" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.auxiliaryIncomer2.$dirty && data1.auxiliaryIncomer2.$invalid}">
+                    <span class="input-label">ATB (AUX.INCOMER-2)</span>
+                    <input type="tel" name="auxiliaryIncomer2" class="form-control" placeholder="ATB (AUX.INCOMER-2)" ng-model="data.auxiliaryIncomer2" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.dgsetUsage.$dirty && data1.dgsetUsage.$invalid}">
+                    <span class="input-label">DG Set</span>
+                    <input type="tel" name="dgsetUsage" class="form-control" placeholder="DG Set" ng-model="data.dgsetUsage" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+                <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': data1.dieselConsumption.$dirty && data1.dieselConsumption.$invalid}">
+                    <span class="input-label">DG Diesel Consumption</span>
+                    <input type="tel" name="dieselConsumption" class="form-control" placeholder="DG Diesel Consumption" ng-model="data.dieselConsumption" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                </label>
+            </div>
+        </ion-content>
+        <div class="tabs dashboardTabsStyle">
+            <button class="button button-stable button-block  button-clear" type="submit" style="font-size:16px;color:white;opacity:1;margin-top: 0px;" ng-disabled="pendingDateNull">
+                SUBMIT
+            </button>
+            <!-- <button ui-sref="main.dashboard" class="button button-stable button-block  button-clear" type="submit" style="font-size:16px;color:black;opacity:1;margin-top: 0px;">
+                CANCEL
+            </button> -->
+        </div>
+    </form>
+</ion-view>

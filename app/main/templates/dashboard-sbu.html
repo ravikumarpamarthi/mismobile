@@ -1,0 +1,80 @@
+<div class="page page-dashboard">
+    <div class="pageheader">
+        <h2>Dashboard-SBU</h2>
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li><a> {{main.title}}</a></li>
+                <li><a>Dashboard-SBU</a></li>
+            </ul>
+            <div class="input-group w-md pull-right">
+                <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="vm.date" is-open="opened" max-date="vm.maxdate" ng-change="loadDashboard(vm.date)" />
+                <span class="input-group-btn">
+      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-click="go('app.reports-dgr-sbu')">
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card bg-green has-padding">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="images/capacity.svg" class="img img-responsive">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-elg text-strong mb-0">Capacity</p>
+                            <h4>{{wind.capacity || '0'}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card bg-orange has-padding">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="images/generation.svg" class="img img-responsive">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-elg text-strong mb-0">Generation</p>
+                            <h4>{{wind.dayGeneration || '0'}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card bg-blue has-padding">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="images/export.svg" class="img img-responsive">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-elg text-strong mb-0">Export</p>
+                            <h4>{{wind.dayExport || '0'}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card bg-darkgray has-padding">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="images/plf.svg" class="img img-responsive">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-elg text-strong mb-0">PLF</p>
+                            <h4>{{wind.dayPlf || '0'}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <!-- ionic meta tags -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- custom meta tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+     <!-- <meta http-equiv="Content-Security-Policy" content="
+        default-src *;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval'
+            https://*.gstatic.com https://*.googleapis.com;
+        style-src 'self' 'unsafe-inline';
+        media-src *"> -->
+    <title>MisMobile</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css main/styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="main/styles/main.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+
+<body ng-app="MisMobile" ng-controller="MainCtrl">
+    <!-- the nav bar will be updated as we navigate between views -->
+    <!-- <ion-nav-bar> can be removed when using sidemenu (contained in menu.html) -->
+    <ion-nav-bar class="bar-royal">
+        <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+    <!-- the current view will be rendered in the <ion-nav-view> directive -->
+    <ion-nav-view ></ion-nav-view>
+    <script id="error-list.html" type="text/ng-template">
+        <div class="error" ng-message="required">
+            This field is required!
+        </div>
+        <div class="error" ng-message="minlength">
+            Minimum length of this field is 5 characters!
+        </div>
+        <div class="error" ng-message="maxlength">
+            Maximum length of this field is 20 characters!
+        </div>
+        <div class="error" ng-message="compareTo">Confirm password must match with password</div>
+    </script>
+    <!-- will be a 404 during development -->
+    <script src="cordova.js"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/localforage/dist/localforage.js"></script>
+    <script src="bower_components/angular-localForage/dist/angular-localForage.js"></script>
+    <script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-base64/angular-base64.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/app.js -->
+    <!-- inject:js -->
+    
+    <script src="main/main.js"></script>
+    
+    <script src="main/services/reports-serv.js"></script>
+    
+    <script src="main/services/plants-service.js"></script>
+    
+    <script src="main/services/main-serv.js"></script>
+    
+    <script src="main/services/hydro-serv.js"></script>
+    
+    <script src="main/services/http-service-serv.js"></script>
+    
+    <script src="main/services/global-serv.js"></script>
+    
+    <script src="main/services/env-service-serv.js"></script>
+    
+    <script src="main/services/dashboard-serv.js"></script>
+    
+    <script src="main/directives/string-mask.js"></script>
+    
+    <script src="main/directives/angular-input-masks-standalone.js"></script>
+    
+    <script src="main/controllers/windPlants.js"></script>
+    
+    <script src="main/controllers/windplantdetails-ctrl.js"></script>
+    
+    <script src="main/controllers/unitleveldgr-ctrl.js"></script>
+    
+    <script src="main/controllers/trends-dgr-stackcharts.js"></script>
+    
+    <script src="main/controllers/trends-dgr-piecharts-ctrl.js"></script>
+    
+    <script src="main/controllers/trends-dgr-barcharts-ctrl.js"></script>
+    
+    <script src="main/controllers/trends-dgr-apex-ctrl.js"></script>
+    
+    <script src="main/controllers/trends-ctrl.js"></script>
+    
+    <script src="main/controllers/thermalplantdetails-ctrl.js"></script>
+    
+    <script src="main/controllers/solarplantdetails-ctrl.js"></script>
+    
+    <script src="main/controllers/reports-dgr-sub.js"></script>
+    
+    <script src="main/controllers/projVSgen_column_chart-ctrl.js"></script>
+    
+    <script src="main/controllers/projVSgen_bar_chart-ctrl.js"></script>
+    
+    <script src="main/controllers/menu-ctrl.js"></script>
+    
+    <script src="main/controllers/main-ctrl.js"></script>
+    
+    <script src="main/controllers/login-ctrl.js"></script>
+    
+    <script src="main/controllers/hydroplantdetails-ctrl.js"></script>
+    
+    <script src="main/controllers/genVSexpVSloss_line_chart-ctrl.js"></script>
+    
+    <script src="main/controllers/gen_donut_chart-ctrl.js"></script>
+    
+    <script src="main/controllers/formenergymeterdgr-ctrl.js"></script>
+    
+    <script src="main/controllers/exportVSloss_stacked_chart-ctrl.js"></script>
+    
+    <script src="main/controllers/export_donut_chart-ctrl.js"></script>
+    
+    <script src="main/controllers/debug-ctrl.js"></script>
+    
+    <script src="main/controllers/dashboard-plantuser.js"></script>
+    
+    <script src="main/controllers/dashboard-ctrl.js"></script>
+    
+    <script src="main/controllers/approvedgr-hydro-ctrl.js"></script>
+    
+    <script src="main/constants/config-const.js"></script>
+    
+    <script src="app.js"></script>
+    
+    <!-- endinject -->
+    <!-- endbuild -->
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="true">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+         
+        <span style="display:inline-block;margin-top:3px;font-weight:500;">{{pendingDate}}</span>
+        </span>
+    </ion-header-bar>
+    <form name="unitLevelDGR" ng-submit="submitunitLevelData(data)" novalidate>
+        <ion-content class="padding has-header animated fadeIn mar-neg-lr-10" style="margin-bottom:50px;" has-bouncing="false">
+            <div class="row">
+                <div class="col ">
+                    <div class="list">
+                        <label class="item item-input item-select" style="padding:5px; ">
+                            <div class="input-label">
+                                Plant Name
+                            </div>
+                            <select ng-model="selectedItem" ng-options="plant as plant.name for plant in plants" ng-change="getPlants(selectedItem);">
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="error text-center " ng-if="pendingDateNull">
+                {{pendingDateNull}}
+            </div>
+            <ion-list>
+                <ion-scroll direction="x" class="wide-as-needed scroll-extra">
+                    <a class="button m-r-5" ng-repeat="group in groups" ng-click="showDetails(data,$index);" ng-class="($index == selectedRow)?'selected':''">UNIT {{group.name}}</a>
+                </ion-scroll>
+                <div class="unit-det-container">
+                    <div class="list">
+                        <label class="item-floating-label item item-input" ng-class="{'has-error': unitLevelDGR.day_generation.$dirty && unitLevelDGR.day_generation.$invalid}">
+                            <span class="input-label">Generation</span>
+                            <input type="tel" name="day_generation" class="item-floating-label" placeholder="Generation in KW" ng-model="data.day_generation" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                        </label>
+                        <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': unitLevelDGR.runningHours.$error.time && unitLevelDGR.runningHours.$invalid}">
+                            <span class="input-label">Running Hours(HH:mm:ss)</span>
+                            <input type="tel" name="runningHours" class="item-floating-label" placeholder="Running Hours(HH:mm:ss)" ng-model="data.runningHours" ui-time-mask required >
+                        </label>
+                        <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': unitLevelDGR.idleHours.$error.time && unitLevelDGR.idleHours.$invalid}">
+                            <span class="input-label">Idle Hours (HH:mm:ss)</span>
+                            <input type="tel" name="idleHours" class="item-floating-label" placeholder="Idle Hours (HH:mm:ss)" ng-model="data.idleHours" ui-time-mask required >
+                        </label>
+                        <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': unitLevelDGR.stoppageHours.$error.time && unitLevelDGR.stoppageHours.$invalid}">
+                            <span class="input-label">Stoppage Hours (HH:mm:ss)</span>
+                            <input type="tel" name="stoppageHours" class="item-floating-label" placeholder="Stoppage Hours (HH:mm:ss)" ng-model="data.stoppageHours" ui-time-mask required >
+                        </label>
+                        <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': unitLevelDGR.unitLoad.$dirty && unitLevelDGR.unitLoad.$invalid}">
+                            <span class="input-label">Avg. Unit Load</span>
+                            <input type="tel" name="unitLoad" class="item-floating-label" placeholder="Avg. Unit Load" ng-model="data.unitLoad" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                        </label>
+                        <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': unitLevelDGR.unitDischarge.$dirty && unitLevelDGR.unitDischarge.$invalid}">
+                            <span class="input-label">Unit Discharge</span>
+                            <input type="tel" name="unitDischarge" class="item-floating-label" placeholder="Unit Discharge" ng-model="data.unitdischarge" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                        </label>
+                        <label class="item-floating-label item item-input input-form-space">
+                            <span class="input-label">Remarks</span>
+                            <input type="text" name="remarks" class="item-floating-label" placeholder="Remarks" ng-model="data.remarks">
+                        </label>
+                        <label class="item-floating-label item item-input input-form-space" ng-class="{'has-error': unitLevelDGR.machineAvailability.$dirty && unitLevelDGR.machineAvailability.$invalid}">
+                            <span class="input-label">Machine Availability</span>
+                            <input type="tel" name="machineAvailability" class="item-floating-label" placeholder="Machine Availability" ng-model="data.machineAvailability" required ng-pattern="/^[0-9]+(\.[0-9]{1,5})?$/" step="0.001" >
+                        </label>
+                    </div>
+                </div>
+            </ion-list>
+        </ion-content>
+        <div class="tabs dashboardTabsStyle">
+            <button class="button button-stable button-block  button-clear" type="submit" style="font-size:16px;color:white;opacity:1;margin-top: 0px;" ng-disabled='pendingDateNull'>
+                SUBMIT
+            </button>
+            <!-- <button ng-click="toggleGroup(group)" class="button button-assertive button-small" type="submit">
+                            CANCEL
+                        </button> -->
+        </div>
+    </form>
+</ion-view>

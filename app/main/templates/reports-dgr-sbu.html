@@ -1,0 +1,32 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="false">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+          <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1" ng-model="date">{{selectedDate1|date}}</span>
+        </span>
+    </ion-header-bar>
+    <ion-content class="has-header animated fadeIn mar-neg-lr-10">
+        <div class="card no-bs">
+            <div class="item item-divider bg-blue">
+                <center>HYDRO PLANTS</center>
+            </div>
+            <div class="row paddingZero cus-fon button">
+                <div class="col text-left">Plant</div>
+                <div class="col text-left">Capacity<span class="fs-9">(MW)</span></div>
+                <div class="col text-left">Export<span class="fs-9">(Lakhs)</span></div>
+                <div class="col text-left">Generation<span class="fs-9">(Lakhs)</span></div>
+            </div>
+            <div ng-if="hydroData.length>0" ng-repeat="plant in hydroData" class="row plant-item paddingZero cus-fon-wei button button-small" ng-click="plantsOpenModal(plant)">
+                <div class="col text-left"><span class="fs-10">{{plant.plantName}}</span></div>
+                <div class="col text-left"><span class="fs-10">{{plant.capacity}}</span>
+                </div>
+                <div class="col text-left"><span class="fs-10">{{plant.dayExport}}</span>
+                </div>
+                <div class="col text-left"><span class="fs-10">{{plant.dayGeneration}}</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

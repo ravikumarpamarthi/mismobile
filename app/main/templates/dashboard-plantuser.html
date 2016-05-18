@@ -1,0 +1,41 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="true">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+          <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1" ng-model="date">{{selectedDate1|date}}</span>
+        </span>
+    </ion-header-bar>
+    <ion-content class="has-header animated fadeIn mar-neg-lr-10" has-bouncing="false">
+        <div class="card hidden " ng-click="typeClick(wind)">
+            <div class="item item-divider bg-green ">
+                <center>WIND</center>
+            </div>
+            <div class="row paddingZero cus-fon">
+                <div class="col text-center">Capacity(MW)</div>
+                <div class="col text-center">Day Export(Lakhs)</div>
+                <div class="col text-center">Day Generation(Lakhs)</div>
+            </div>
+            <div class="row paddingZero cus-fon-wei">
+                <div class="col text-center">{{wind.capacity||0}} </div>
+                <div class="col text-center">{{wind.dayExport||0}}</div>
+                <div class="col text-center">{{wind.dayGeneration||0}} </div>
+            </div>
+        </div>
+        <div class="card" ng-click="checkDatevalue()">
+            <div class="item item-divider bg-blue hidden ">
+                <center>HYDRO</center>
+            </div>
+            <div class="row paddingZero cus-fon">
+                <div class="col text-center">Capacity(MW)</div>
+                <div class="col text-center">Export(Lakhs)</div>
+                <div class="col text-center">Generation(Lakhs)</div>
+            </div>
+            <div class="row paddingZero cus-fon-wei">
+                <div class="col text-center">{{reportData.capacity||0}} </div>
+                <div class="col text-center">{{reportData.dayExport||0}} </div>
+                <div class="col text-center">{{reportData.dayGeneration||0}}</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

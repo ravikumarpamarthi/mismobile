@@ -1,0 +1,185 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="false">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+          <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1" >{{selectedDate1|date}}</span>
+        </span>
+    </ion-header-bar>
+    <ion-content class="has-header animated fadeIn mar-neg-lr-10">
+        <div class="card">
+            <div class="item item-divider bg-blue ">
+                <center>ENERGY METER</center>
+            </div>
+            <div class="row paddingZero cus-fon">
+                <div class="col text-left">Meter Name</div>
+                <div class="col text-left">Export kWh</div>
+                <div class="col text-left">Import kWh</div>
+            </div>
+            <div class="row paddingZero cus-fon-wei">
+                <div class="col text-left"><span class="fs-10">BILLINGMETER</span></div>
+                <div class="col text-left"><span class="fs-10">179.200 <span class="fs-9">MW</span></span>
+                </div>
+                <div class="col text-left"><span class="fs-10">4.016 <span class="fs-9">Lakhs</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin-bottom:3px;">
+            <div class="item item-divider bg-blue ">
+                <center>PLANT LEVEL DATA</center>
+            </div>
+        </div>
+        <div class="unit-det-container-pd">
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Dam/Intake/headrace Water level(meters)</div>
+                <div class="col col-33 fs-9">556.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Discharge Dam gates/ barrage gates </div>
+                <div class="col col-33 fs-9">0.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Plant Avialability(%)</div>
+                <div class="col col-33 fs-9">24.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">DG Set</div>
+                <div class="col col-33 fs-9">0.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">TWL/ Tailrace water level(meters)</div>
+                <div class="col col-33 fs-9">0.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Horebele reservoir water level</div>
+                <div class="col col-33 fs-9">0.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Load Measure Time</div>
+                <div class="col col-33 fs-9">08:30:00</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">DG Diesel Consumption</div>
+                <div class="col col-33 fs-9">0.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Head(meters)</div>
+                <div class="col col-33 fs-9">0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Plant Discharge</div>
+                <div class="col col-33 fs-9">0.84</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">ATA (AUX.INCOMER-1)</div>
+                <div class="col col-33 fs-9">390.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Inflow to Reservoir(cumecs)</div>
+                <div class="col col-33 fs-9">0.84</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Grid Availability(%)</div>
+                <div class="col col-33 fs-9">100.0</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">ATB (AUX.INCOMER-2)</div>
+                <div class="col col-33 fs-9">0.0</div>
+            </div>
+        </div>
+        <div class="card" style="margin-bottom:3px;">
+            <div class="item item-divider bg-blue ">
+                <center>UNITS</center>
+            </div>
+        </div>
+        <ion-scroll direction="x" class="wide-as-needed scroll-extra">
+            <a class="button m-r-5" ng-repeat="unit in units" ng-bind="unit.name" ng-click="showDetails(unit,$index);" ng-class="{'selected':$index == selectedRow}"></a>
+        </ion-scroll>
+        <div class="unit-det-container">
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Avg Wind Speed</div>
+                <div class="col col-33 fs-9">{{ud.avgWindSpeed}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Generation (kWh)</div>
+                <div class="col col-33 fs-9">{{ud.mtdGeneration}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">PLF %</div>
+                <div class="col col-33 fs-9">{{ud.dayPlf}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Daily Operational Hrs</div>
+                <div class="col col-33 fs-9">{{ud.dayOperationHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Lull Hrs</div>
+                <div class="col col-33 fs-9">{{ud.lullHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">MTD Generation</div>
+                <div class="col col-33 fs-9">{{ud.mtdGeneration}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Monthly PLF</div>
+                <div class="col col-33 fs-9">{{ud.monthlyPlf}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">WTG Fault</div>
+                <div class="col col-33 fs-9">{{ud.wtgFaultHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">WTG Shutdown</div>
+                <div class="col col-33 fs-9">{{ud.wtgShutdownHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">WTG Remarks</div>
+                <div class="col col-33 fs-9">{{ud.wtgRemarks}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Machine Availability</div>
+                <div class="col col-33 fs-9">{{ud.macAvailability}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">PSS Fault</div>
+                <div class="col col-33 fs-9">{{ud.pssFaultHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">PSS Shutdown</div>
+                <div class="col col-33 fs-9">{{ud.pssShutdownHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">USS Fault</div>
+                <div class="col col-33 fs-9">{{ud.ussFaultHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">USS Shutdown</div>
+                <div class="col col-33 fs-9">{{ud.ussShutdownHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Line 220Kv Fault</div>
+                <div class="col col-33 fs-9">{{ud.line220kvFaultHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Line 33kv Fault</div>
+                <div class="col col-33 fs-9">{{ud.line33kvFaultHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Line 220Kv S/D</div>
+                <div class="col col-33 fs-9">{{ud.line220kvShutdownHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Line 33Kv S/D</div>
+                <div class="col col-33 fs-9">{{ud.line33kvShutdownHrs}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Grid Availability</div>
+                <div class="col col-33 fs-9">{{ud.gridAvailability}}</div>
+            </div>
+            <div class="row p-tb-0">
+                <div class="col col-67 fs-9">Grid Remarks</div>
+                <div class="col col-33 fs-9">{{ud.gridRemarks}}</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

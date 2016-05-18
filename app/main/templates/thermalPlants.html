@@ -1,0 +1,49 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="false">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+          <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1">{{selectedDate1|date}}</span>
+        </span>
+    </ion-header-bar>
+    <ion-content class="has-header animated fadeIn mar-neg-lr-10">
+        <div class="card no-bs">
+            <div class="item item-divider bg-orange">
+                <center>THERMAL PLANTS</center>
+            </div>
+            <div class="row paddingZero cus-fon button">
+                <div class="col text-left">Plant</div>
+                <div class="col text-left">Capacity</div>
+                <div class="col text-left">Export</div>
+                <div class="col text-left">Generation</div>
+            </div>
+            <div class="row plant-item paddingZero cus-fon-wei button button-small" ui-sref="main.thermalplantdetails">
+                <div class="col text-left"><span class="fs-10">Ananthapura</span></div>
+                <div class="col text-left"><span class="fs-10">179.200 <span class="fs-9">MW</span></span>
+                </div>
+                <div class="col text-left"><span class="fs-10">4.016 <span class="fs-9">Lakhs</span></span>
+                </div>
+                <div class="col text-left"><span class="fs-10">4.311 <span class="fs-9">Lakhs</span></span>
+                </div>
+            </div>
+            <div class="row plant-item paddingZero cus-fon-wei button button-small" ui-sref="main.thermalplantdetails">
+                <div class="col text-left"><span class="fs-10">Rayalaseema</span></div>
+                <div class="col text-left"><span class="fs-10">179.200 <span class="fs-9">MW</span></span>
+                </div>
+                <div class="col text-left"><span class="fs-10">4.016 <span class="fs-9">Lakhs</span></span>
+                </div>
+                <div class="col text-left"><span class="fs-10">4.311 <span class="fs-9">Lakhs</span></span>
+                </div>
+            </div>
+            <div class="row plant-item paddingZero cus-fon-wei button button-small" ui-sref="main.thermalplantdetails">
+                <div class="col text-left"><span class="fs-10">Rayala</span></div>
+                <div class="col text-left"><span class="fs-10">179.200 <span class="fs-9">MW</span></span>
+                </div>
+                <div class="col text-left"><span class="fs-10">4.016 <span class="fs-9">Lakhs</span></span>
+                </div>
+                <div class="col text-left"><span class="fs-10">4.311 <span class="fs-9">Lakhs</span></span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

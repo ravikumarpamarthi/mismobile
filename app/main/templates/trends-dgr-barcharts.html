@@ -1,0 +1,42 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="false">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos">
+          <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1" ng-click="openDatePicker()" ng-model="date">{{selectedDate1|date}}</span>
+        </span>
+    </ion-header-bar>
+    <ion-content class="has-header animated fadeIn mar-neg-lr-12">
+        <div class="row">
+            <div class="col">
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Type
+                        </div>
+                        <select ng-model="selectedItem" ng-options="plant as plant.name for plant in types" ng-change="getChartsByDate(selectedItem,apexMonth)">
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="col ">
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Months
+                        </div>
+                        <select ng-model="apexMonth" ng-options="month as month.name for month in months" ng-change="getChartsByDate(selectedItem,apexMonth)">
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card no-bs">
+            <ion-scroll zooming="true" direction="xy" delegate-handle="zoom-pane" class="zoom-pane" min-zoom="1" scrollbar-x="true" scrollbar-y="true">
+                <div ng-if="chartObject.data.cols" google-chart chart="chartObject" style="height:350px"></div>
+                <div ng-hide="chartObject.data.cols">No data Found</div>
+            </ion-scroll>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

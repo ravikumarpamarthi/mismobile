@@ -1,0 +1,42 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="true">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <!-- <span class="fl-right date-pos" ng-click="openDatePicker();">
+              <i class="icon ion-android-calendar cus-icon-fs" ></i>
+              <span ng-if="selectedDate1" ng-model="date">{{selectedDate1|date}}</span>
+        </span> -->
+    </ion-header-bar>
+    <ion-content>
+        <div google-chart chart="myChartObject" style="height:600px; width:100%;"></div>
+        <div class="card">
+            <div class="item item-text-wrap" href ui-sref="main.gen_donut_chart">
+                Generation Donut Chart
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap" href ui-sref="main.projVSgen_column_chart">
+                Projection and Generation Column Chart
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap" href ui-sref="main.projVSgen_bar_chart">
+                Projection and Generation Bar Chart
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap" href ui-sref="main.genVSexpVSloss_line_chart">
+                Generation and Export and Loass Line Chart
+            </div>
+        </div>
+        <!-- <div class="card">
+        <div class="item item-text-wrap" href ui-sref="main.exportVSloss_stacked_chart">
+            This is a basic Card which contains an item that has wrapping text.
+        </div>
+    </div> -->
+        <div class="card">
+            <div class="item item-text-wrap" href ui-sref="main.export_donut_chart">
+                Export Donut Chart
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

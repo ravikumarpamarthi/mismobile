@@ -1,0 +1,107 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <!-- CONTENT -->
+    <ion-side-menu-content>
+        <!-- header bar -->
+        <!-- the nav bar will be updated as we navigate between views -->
+        <ion-nav-bar class="bar-stable">
+            <!-- back button, shown if applicable -->
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <!-- nav button, shown if applicable -->
+            <ion-nav-buttons side="left">
+                <button class="button button-icon icon ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-title class="header-img-div" style="margin:5px 0px;">
+                <img alt="Company Logo" class="header-image title-image" src="main/assets/images/logo_greeenko_eps.svg" style="width:80%;" ng-click="go('main.dashboard')">
+            </ion-nav-title>
+        </ion-nav-bar>
+        <!-- ROUTING INJECTED HERE: pageContent -->
+        <ion-nav-view name="pageContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <!-- SIDEMENU -->
+    <ion-side-menu enable-menu-with-back-views="false">
+        <!-- menu header -->
+        <ion-header-bar class="bar-stable">
+            <div class="text-center title">
+                <h3 class="text-light text-white"><img src="main/assets/images/logo_greeenko_eps.svg" class="header-image"  style="width: 80%; "/>
+        </div>
+    </ion-header-bar>
+
+
+    <!-- menu content -->
+    <ion-content>
+      <ion-list>
+        <div ng-if="authentication">
+
+          <ion-item menu-close href ng-click="showDashboard()">
+            <i class="icon ion-speedometer" style="font-size:24px;"></i> Dashboard
+          </ion-item>
+        </div>
+      </ion-list>
+      <ion-list ng-hide="windSBU || windUser">
+        <div ng-if="authentication.businessType=='HYDRO'" >
+          <div ng-repeat="group in groups" >
+            <ion-item ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <span ><i class="icon ion-android-checkbox-outline" style="font-size:24px;"></i> DGR Transactions&nbsp;&nbsp;<i style="position:absolute;right:20px;" class="icon" ng-class="isGroupShown(group) ? 'ion-ios-arrow-down' : 'ion-ios-arrow-right'"></i></span>
+            </ion-item>
+            <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px" menu-close >
+              <span ui-sref="main.formplantleveldgr" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden " style="font-size:24px;"></i> Plant Level - Hydro</span>
+            </ion-item>
+            <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px;" menu-close >
+              <span ui-sref="main.formunitleveldgr" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden" style="font-size:24px;"></i> Unit Level - Hydro</span>
+            </ion-item>
+            <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px;" menu-close >
+              <span  ui-sref="main.formenergymeterdgr" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden" style="font-size:24px;"></i> Energy Meter - Hydro</span>
+            </ion-item>  <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px;" menu-close >
+              <span  ui-sref="main.transactions-approvedgr-hydro" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden" style="font-size:24px;"></i> Approved DGR</span>
+            </ion-item>            
+          </div>
+        </div>          
+      </ion-list>
+      <ion-list ng-hide="windSBU || windUser">
+        <div >
+          <div ng-repeat="group in lists" >
+            <ion-item ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <span ><i class="icon ion-android-checkbox-outline" style="font-size:24px;"></i> Trends&nbsp;&nbsp;<i style="position:absolute;right:20px;" class="icon" ng-class="isGroupShown(group) ? 'ion-ios-arrow-down' : 'ion-ios-arrow-right'"></i></span>
+            </ion-item>
+         
+              <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px;" menu-close >
+              <span ui-sref="main.trends" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden" style="font-size:24px;"></i> Line Charts</span>
+            </ion-item>
+            <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px;" menu-close >
+              <span ui-sref="main.barcharts" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden" style="font-size:24px;"></i> Bar Charts</span>
+            </ion-item>
+            <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px;" menu-close >
+              <span  ui-sref="main.piecharts" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden" style="font-size:24px;"></i> Pie Charts</span>
+            </ion-item> 
+            <ion-item class="item-accordion subMenuBG item-complex" ng-show="isGroupShown(group)" style="padding-left: 36px;" menu-close >
+              <span  ui-sref="main.stackcharts" style="display:inline-block;padding:10px 5px;"><i class="icon ion-ios-checkmark-empty hidden" style="font-size:24px;"></i> Stack Charts</span>
+            </ion-item>            
+          </div>
+        </div>          
+      </ion-list>
+      <ion-list>  
+        <ion-item ng-if="!authentication" menu-close ui-sref="main.login">
+          Login
+        </ion-item>
+        <ion-item ng-if="authentication" menu-close class="" ng-click="reports()">
+          <i class="icon ion-connection-bars" style="font-size:24px;"></i> Reports
+        </ion-item>
+        <ion-item ng-if="authentication" menu-close class="hidden">
+          <i class="icon ion-connection-bars" style="font-size:24px;"></i> Trends
+        </ion-item>
+       
+        <!-- <ion-item ng-if="authentication" menu-close class="" ng-click="columnChart()">
+          <i class="icon ion-connection-bars" style="font-size:24px;"></i> Column Chart
+        </ion-item> -->
+        <ion-item ng-if="authentication" menu-close ng-click="logout();">
+          <i class="icon ion-log-out" style="font-size:24px;"></i> Logout
+        </ion-item>
+      </ion-list>
+      
+    </ion-content>
+
+  </ion-side-menu>
+
+</ion-side-menus>

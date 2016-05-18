@@ -1,0 +1,71 @@
+<ion-view hide-nav-bar="false" title="" cache-view="false" hide-back-button="true">
+    <ion-header-bar align-title="left" class="bar-subheader cus-sub-header">
+        <span class="dash-user"><i class="icon ion-person"></i> {{authentication.name}}</span>
+        <span class="fl-right date-pos" ng-click="openDatePicker();">
+          <i class="icon ion-android-calendar cus-icon-fs" ></i>
+          <span ng-if="selectedDate1" ng-model="date">{{selectedDate1|date}}</span>
+        </span>
+    </ion-header-bar>
+    <ion-content class="has-header animated fadeIn mar-neg-lr-10" has-bouncing="false">
+        <div class="card" ng-click="typeClick(wind)">
+            <div class="item item-divider bg-green ">
+                <center>WIND</center>
+            </div>
+            <div class="row paddingZero cus-fon">
+                <div class="col text-center">Capacity(MW)</div>
+                <div class="col text-center">Export(Lakhs)</div>
+                <div class="col text-center">Generation(Lakhs)</div>
+            </div>
+            <div class="row paddingZero cus-fon-wei">
+                <div class="col text-center">{{wind.capacity||0}} </div>
+                <div class="col text-center">{{wind.dayExport||0}}</div>
+                <div class="col text-center">{{wind.dayGeneration||0}} </div>
+            </div>
+        </div>
+        <div class="card" ng-click="typeClick(hydro)">
+            <div class="item item-divider bg-blue">
+                <center>HYDRO</center>
+            </div>
+            <div class="row paddingZero cus-fon">
+                <div class="col text-center">Capacity(MW)</div>
+                <div class="col text-center">Export(Lakhs)</div>
+                <div class="col text-center">Generation(Lakhs)</div>
+            </div>
+            <div class="row paddingZero cus-fon-wei">
+                <div class="col text-center">{{hydro.capacity||0}} </div>
+                <div class="col text-center">{{hydro.dayExport||0}} </div>
+                <div class="col text-center">{{hydro.dayGeneration||0}}</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider bg-orange">
+                <center>THERMAL</center>
+            </div>
+            <div class="row paddingZero cus-fon">
+                <div class="col text-center">Capacity(MW)</div>
+                <div class="col text-center">Export(Lakhs)</div>
+                <div class="col text-center">Generation(Lakhs)</div>
+            </div>
+            <div class="row paddingZero cus-fon-wei">
+                <div class="col text-center">{{biomass.capacity||0}} </div>
+                <div class="col text-center">{{biomass.dayExport||0}} </div>
+                <div class="col text-center">{{biomass.dayGeneration||0}} </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider bg-slategray">
+                <center>SOLAR</center>
+            </div>
+            <div class="row paddingZero cus-fon">
+                <div class="col text-center">Capacity(MW)</div>
+                <div class="col text-center">Export(Lakhs)</div>
+                <div class="col text-center">Generation(Lakhs)</div>
+            </div>
+            <div class="row paddingZero cus-fon-wei">
+                <div class="col text-center">{{solar.capacity||0}} </div>
+                <div class="col text-center">{{solar.dayExport||0}}</div>
+                <div class="col text-center">{{solar.dayGeneration||0}} </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
